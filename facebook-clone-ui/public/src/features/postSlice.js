@@ -1,0 +1,24 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+export const postSlice = createSlice({
+    name: "post",
+    initialState : {
+        value: [],
+    },
+    // different events which need to be performed
+    reducers : {
+        // action needs to be defined in case of payload
+        addPost: (state, action) => {
+            console.log("AddPost Action");
+            state.value.unshift(action.payload)
+        },
+        addAllPost : (state, action) => {
+            console.log("AddPost Action");
+            state.value.push(...action.payload);
+        }
+    },
+})
+
+export const { addPost , addAllPost } = postSlice.actions;
+export const selectPost = (state) => state.post.value;
+export default postSlice.reducer;
